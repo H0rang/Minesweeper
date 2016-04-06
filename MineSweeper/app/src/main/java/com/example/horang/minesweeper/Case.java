@@ -11,9 +11,11 @@ public class Case{
     private Button button;
     private boolean mine;
 
-    public void setButton(Button b){
+    Case(Button b){
         button = b;
         button.setBackgroundColor(Color.BLACK);
+        button.setTextSize(12);
+        mine = false;
     }
 
     public Button getButton(){

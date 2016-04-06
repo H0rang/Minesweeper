@@ -10,9 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity{
     Case[][] grid;
     GridLayout greed;
+    int i, j;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +24,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         greed = (GridLayout) findViewById(R.id.greed);
 
         grid = new Case[10][10];
-        for(int i = 0; i < 10; i++){
-            for (int j = 0; j < 10; j++){
-                grid[i][j] = new Case();
-                grid[i][j].setButton((Button)greed.getChildAt(i*10 + j));
+        for(i = 0; i < 10; i++){
+            for (j = 0; j < 10; j++){
+                grid[i][j] = new Case((Button)greed.getChildAt(i*10 + j));
                 Button button = grid[i][j].getButton();
-                button.setOnClickListener(this);
+                button.setOnClickListener(new View.OnClickListener() {
+                    int a = i;
+                    int b = j;
+                    @Override
+                    public void onClick(View v) {
+                        if(grid[a][b].getMine()) {
+                            v.setBackgroundColor(Color.RED);
+                            grid[a][b].getButton().setText("M");
+                        }
+                        else
+                            v.setBackgroundColor(Color.GRAY);
+
+                    }
+                });
+            }
+        }
+
+        int n = 20;
+        while(n > 0){
+            Random rnd = new Random();
+            int a = rnd.nextInt(10);
+            int b = rnd.nextInt(10);
+            if(!grid[a][b].getMine()){
+                grid[a][b].setMine(true);
+                n--;
             }
         }
     }
@@ -51,10 +77,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View v) {
-        v.setBackgroundColor(Color.GRAY);
     }
 }
