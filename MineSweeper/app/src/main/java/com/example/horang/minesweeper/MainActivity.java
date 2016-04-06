@@ -1,14 +1,16 @@
 package com.example.horang.minesweeper;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Case[][] grid;
     GridLayout greed;
 
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
             for (int j = 0; j < 10; j++){
                 grid[i][j] = new Case();
                 grid[i][j].setButton((Button)greed.getChildAt(i*10 + j));
+                Button button = grid[i][j].getButton();
+                button.setOnClickListener(this);
             }
         }
     }
@@ -47,5 +51,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        v.setBackgroundColor(Color.GRAY);
     }
 }
