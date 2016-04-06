@@ -1,5 +1,6 @@
 package com.example.horang.minesweeper;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -15,12 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        greed = (GridLayout) findViewById(R.id.grid);
+        greed = (GridLayout) findViewById(R.id.greed);
 
         grid = new Case[10][10];
-        for(int i = 0; i < grid.length; i++){
-            for (int j = 0; j < grid[i].length; j++){
-                grid[i][j] = new Case((Button)greed.getChildAt(i*10 + j));
+        for(int i = 0; i < 10; i++){
+            for (int j = 0; j < 10; j++){
+                grid[i][j] = new Case();
+                grid[i][j].setButton((Button)greed.getChildAt(i*10 + j));
             }
         }
     }

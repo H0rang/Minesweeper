@@ -1,5 +1,7 @@
 package com.example.horang.minesweeper;
 
+
+import android.graphics.Color;
 import android.widget.Button;
 
 /**
@@ -8,9 +10,14 @@ import android.widget.Button;
 public class Case {
     private Button button;
     private boolean mine;
-    
-    Case(Button b){
+
+    public void setButton(Button b){
         button = b;
+        button.setBackgroundColor(Color.BLACK);;
+    }
+
+    public Button getButton(){
+        return button;
     }
 
     public void setMine(boolean bool){

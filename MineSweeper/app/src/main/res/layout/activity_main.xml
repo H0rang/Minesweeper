@@ -7,8 +7,7 @@
     <include layout="@layout/custom_view"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        android:layout_centerInParent="true"
-        android:id="@+id/include" />
+        android:layout_centerInParent="true"/>
 
     <TextView
         android:id="@+id/text1"
@@ -17,15 +16,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
         android:layout_alignTop="@+id/text2"
-        android:layout_alignStart="@+id/include" />
+        android:layout_alignStart="@+id/greed" />
 
     <TextView
         android:id="@+id/text2"
         android:text="Text 2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/include"
-        android:layout_alignEnd="@+id/include"
+        android:layout_above="@+id/greed"
+        android:layout_alignEnd="@+id/greed"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="41dp" />
 
@@ -34,14 +33,14 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button"
-        android:layout_below="@+id/include"
-        android:layout_alignEnd="@+id/include" />
+        android:layout_below="@+id/greed"
+        android:layout_alignEnd="@+id/greed" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button2"
-        android:layout_below="@+id/include"
-        android:layout_alignStart="@+id/include" />
+        android:layout_below="@+id/greed"
+        android:layout_alignStart="@+id/greed" />
 </RelativeLayout>
