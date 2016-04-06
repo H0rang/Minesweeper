@@ -1,20 +1,28 @@
 package com.example.horang.minesweeper;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.GridLayout;
 
 public class MainActivity extends AppCompatActivity {
+    Case[][] grid;
+    GridLayout greed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        greed = (GridLayout) findViewById(R.id.grid);
+
+        grid = new Case[10][10];
+        for(int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[i].length; j++){
+                grid[i][j] = new Case((Button)greed.getChildAt(i*10 + j));
+            }
+        }
     }
 
     @Override

@@ -18,6 +18,7 @@
         android:layout_marginStart="39dp"
         android:layout_alignTop="@+id/text2"
         android:layout_alignStart="@+id/include" />
+
     <TextView
         android:id="@+id/text2"
         android:text="Text 2"
@@ -27,4 +28,20 @@
         android:layout_alignEnd="@+id/include"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="41dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_below="@+id/include"
+        android:layout_alignEnd="@+id/include" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button2"
+        android:layout_below="@+id/include"
+        android:layout_alignStart="@+id/include" />
 </RelativeLayout>
