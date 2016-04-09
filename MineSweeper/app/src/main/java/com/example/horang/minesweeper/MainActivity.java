@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -22,12 +23,26 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         greed = (GridLayout) findViewById(R.id.greed);
-
         grid = new Case[10][10];
+        init();
+        Button reset = (Button) findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                init();
+            }
+        });
+    }
+
+    public void init(){
+        final TextView info = (TextView) findViewById(R.id.info);
+        info.setText("Number of mines : 20");
+
         for(i = 0; i < 10; i++){
             for (j = 0; j < 10; j++){
                 grid[i][j] = new Case((Button)greed.getChildAt(i*10 + j));
                 Button button = grid[i][j].getButton();
+                button.setEnabled(true);
                 button.setOnClickListener(new View.OnClickListener() {
                     int a = i;
                     int b = j;
@@ -36,6 +51,14 @@ public class MainActivity extends AppCompatActivity{
                         if(grid[a][b].getMine()) {
                             v.setBackgroundColor(Color.RED);
                             grid[a][b].getButton().setText("M");
+                            grid[a][b].getButton().setEnabled(false);
+                            info.setText("You lost");
+
+                            for(int k = 0; k < 10; k++){
+                                for(int l = 0; l < 10; l++){
+                                    grid[k][l].getButton().setEnabled(false);
+                                }
+                            }
                         }
                         else{
                             v.setBackgroundColor(Color.GRAY);
@@ -59,6 +82,7 @@ public class MainActivity extends AppCompatActivity{
                                         break;
                                 }
                                 grid[a][b].getButton().setText("" + n);
+                                grid[a][b].getButton().setEnabled(false);
                             }
                         }
                     }

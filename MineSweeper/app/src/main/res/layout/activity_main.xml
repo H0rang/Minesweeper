@@ -10,17 +10,17 @@
         android:layout_centerInParent="true"/>
 
     <TextView
-        android:id="@+id/text1"
-        android:text="Text 1"
+        android:id="@+id/info"
+        android:text="Number of mines : 20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
-        android:layout_alignTop="@+id/text2"
+        android:layout_alignTop="@+id/mines"
         android:layout_alignStart="@+id/greed" />
 
     <TextView
-        android:id="@+id/text2"
-        android:text="Text 2"
+        android:id="@+id/mines"
+        android:text="Mines marked : 0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/greed"
@@ -28,19 +28,27 @@
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="41dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textMode"
+        android:layout_alignBottom="@+id/reset"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
+        android:text="Mode"
+        android:id="@+id/mode"
         android:layout_below="@+id/greed"
         android:layout_alignEnd="@+id/greed" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2"
+        android:text="Reset"
+        android:id="@+id/reset"
         android:layout_below="@+id/greed"
         android:layout_alignStart="@+id/greed" />
 </RelativeLayout>
