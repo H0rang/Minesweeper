@@ -37,9 +37,30 @@ public class MainActivity extends AppCompatActivity{
                             v.setBackgroundColor(Color.RED);
                             grid[a][b].getButton().setText("M");
                         }
-                        else
+                        else{
                             v.setBackgroundColor(Color.GRAY);
-
+                            int n = grid[a][b].neighbours;
+                            if(n == 0){
+                                grid[a][b].getButton().setText("");
+                            }
+                            else{
+                                switch(n){
+                                    case 1 :
+                                        grid[a][b].getButton().setTextColor(Color.BLUE);
+                                        break;
+                                    case 2 :
+                                        grid[a][b].getButton().setTextColor(Color.GREEN);
+                                        break;
+                                    case 3 :
+                                        grid[a][b].getButton().setTextColor(Color.YELLOW);
+                                        break;
+                                    default:
+                                        grid[a][b].getButton().setTextColor(Color.RED);
+                                        break;
+                                }
+                                grid[a][b].getButton().setText("" + n);
+                            }
+                        }
                     }
                 });
             }
@@ -53,6 +74,23 @@ public class MainActivity extends AppCompatActivity{
             if(!grid[a][b].getMine()){
                 grid[a][b].setMine(true);
                 n--;
+
+                if(a > 0 && b > 0)
+                    grid[a - 1][b - 1].neighbours++;
+                if(a > 0 && b < 9)
+                    grid[a - 1][b + 1].neighbours++;
+                if(a < 9 && b > 0)
+                    grid[a + 1][b - 1].neighbours++;
+                if(a < 9 && b < 9)
+                    grid[a + 1][b + 1].neighbours++;
+                if(a > 0)
+                    grid[a - 1][b].neighbours++;
+                if(a < 9)
+                    grid[a + 1][b].neighbours++;
+                if(b > 0)
+                    grid[a][b - 1].neighbours++;
+                if(b < 9)
+                    grid[a][b + 1].neighbours++;
             }
         }
     }

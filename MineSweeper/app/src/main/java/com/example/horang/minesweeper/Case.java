@@ -10,12 +10,15 @@ import android.widget.Button;
 public class Case{
     private Button button;
     private boolean mine;
+    public int neighbours;
 
     Case(Button b){
         button = b;
         button.setBackgroundColor(Color.BLACK);
+        button.setTextColor(Color.BLACK);
         button.setTextSize(12);
         mine = false;
+        neighbours = 0;
     }
 
     public Button getButton(){
