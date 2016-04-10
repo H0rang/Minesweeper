@@ -16,7 +16,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity{
     Case[][] grid;
     GridLayout greed;
-    int i, j, marked;
+    int i, j, marked, uncovered;
     boolean uncoverMode;
     TextView info, mines;
 
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void init(){
+        uncovered = 0;
         marked = 0;
         mines = (TextView) findViewById(R.id.mines);
         mines.setText("Mines marked : " + marked);
@@ -119,7 +120,12 @@ public class MainActivity extends AppCompatActivity{
                                     v.setBackgroundColor(Color.GRAY);
                                     int n = grid[a][b].neighbours;
                                     if(n == 0){
+                                        uncovered++;
                                         grid[a][b].getButton().setText("");
+                                        if(uncovered == 80){
+                                            info.setText("You won");
+                                        }
+                                        //clickneighbours(a, b);
                                     }
                                     else{
                                         switch(n){
@@ -138,6 +144,10 @@ public class MainActivity extends AppCompatActivity{
                                         }
                                         grid[a][b].getButton().setText("" + n);
                                         grid[a][b].getButton().setEnabled(false);
+                                        uncovered++;
+                                        if(uncovered == 80){
+                                            info.setText("You won");
+                                        }
                                     }
                                 }
                             }
@@ -191,5 +201,24 @@ public class MainActivity extends AppCompatActivity{
                     grid[a][b + 1].neighbours++;
             }
         }
+    }
+
+    public void clickneighbours(int a, int b){
+        if(a > 0 && b > 0)
+            grid[a - 1][b - 1].getButton().callOnClick();
+        if(a > 0 && b < 9)
+            grid[a - 1][b + 1].getButton().callOnClick();
+        if(a < 9 && b > 0)
+            grid[a + 1][b - 1].getButton().callOnClick();
+        if(a < 9 && b < 9)
+            grid[a + 1][b + 1].getButton().callOnClick();
+        if(a > 0)
+            grid[a - 1][b].getButton().callOnClick();
+        if(a < 9)
+            grid[a + 1][b].getButton().callOnClick();
+        if(b > 0)
+            grid[a][b - 1].getButton().callOnClick();
+        if(b < 9)
+            grid[a][b + 1].getButton().callOnClick();
     }
 }
