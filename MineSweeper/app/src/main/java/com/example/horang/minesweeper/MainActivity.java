@@ -1,6 +1,5 @@
 package com.example.horang.minesweeper;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -125,7 +124,6 @@ public class MainActivity extends AppCompatActivity{
                                         if(uncovered == 80){
                                             info.setText("You won");
                                         }
-                                        //clickneighbours(a, b);
                                     }
                                     else{
                                         switch(n){
@@ -201,24 +199,5 @@ public class MainActivity extends AppCompatActivity{
                     grid[a][b + 1].neighbours++;
             }
         }
-    }
-
-    public void clickneighbours(int a, int b){
-        if(a > 0 && b > 0)
-            grid[a - 1][b - 1].getButton().callOnClick();
-        if(a > 0 && b < 9)
-            grid[a - 1][b + 1].getButton().callOnClick();
-        if(a < 9 && b > 0)
-            grid[a + 1][b - 1].getButton().callOnClick();
-        if(a < 9 && b < 9)
-            grid[a + 1][b + 1].getButton().callOnClick();
-        if(a > 0)
-            grid[a - 1][b].getButton().callOnClick();
-        if(a < 9)
-            grid[a + 1][b].getButton().callOnClick();
-        if(b > 0)
-            grid[a][b - 1].getButton().callOnClick();
-        if(b < 9)
-            grid[a][b + 1].getButton().callOnClick();
     }
 }
