@@ -10,6 +10,7 @@ import android.widget.Button;
 public class Case{
     private Button button;
     private boolean mine;
+    private boolean marked;
     public int neighbours;
 
     Case(Button b){
@@ -18,6 +19,7 @@ public class Case{
         button.setTextColor(Color.BLACK);
         button.setTextSize(12);
         mine = false;
+        marked = false;
         neighbours = 0;
     }
 
@@ -32,4 +34,8 @@ public class Case{
     public boolean getMine(){
         return mine;
     }
+
+    public void setMarked(boolean bool) { marked = bool; }
+
+    public boolean getMarked() { return  marked;}
 }
