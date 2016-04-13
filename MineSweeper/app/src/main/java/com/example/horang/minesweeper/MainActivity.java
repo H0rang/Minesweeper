@@ -118,12 +118,13 @@ public class MainActivity extends AppCompatActivity{
                                 else{
                                     v.setBackgroundColor(Color.GRAY);
                                     int n = grid[a][b].neighbours;
+                                    grid[a][b].getButton().setEnabled(false);
+                                    uncovered++;
+                                    if(uncovered == 80){
+                                        info.setText("You won");
+                                    }
                                     if(n == 0){
-                                        uncovered++;
                                         grid[a][b].getButton().setText("");
-                                        if(uncovered == 80){
-                                            info.setText("You won");
-                                        }
                                     }
                                     else{
                                         switch(n){
@@ -141,11 +142,6 @@ public class MainActivity extends AppCompatActivity{
                                                 break;
                                         }
                                         grid[a][b].getButton().setText("" + n);
-                                        grid[a][b].getButton().setEnabled(false);
-                                        uncovered++;
-                                        if(uncovered == 80){
-                                            info.setText("You won");
-                                        }
                                     }
                                 }
                             }
